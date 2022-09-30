@@ -1,3 +1,13 @@
+:root {
+  --black: rgb(18, 19, 19);
+  --background: rgb(255, 255, 255);
+  --green: rgb(128,244,192);
+  --blue: rgb(0,161,232);
+  --pink: pink;
+  --gray: rgb(82, 82, 82);
+  --nimiq-ease: cubic-bezier(0.25,0,0,1);
+}
+
 html,
 body {
   padding: 0;
@@ -11,8 +21,19 @@ a {
   text-decoration: none;
 }
 
+.link {
+  color: rgb(82, 82, 82);
+  background: linear-gradient(37deg, var(--blue) 0%, var(--green) 100%);
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  position: relative;
+  font-weight: bold;
+}
+
 * {
   box-sizing: border-box;
+  scrollbar-width: auto;
+  scrollbar-color: #24a0ff #ffffff;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -20,7 +41,198 @@ a {
     color-scheme: dark;
   }
   body {
-    color: white;
-    background: black;
+    color: var(--black);
+    background: var(--background);
   }
+}
+
+*::-webkit-scrollbar {
+  width: 12px;
+  background-color: white;
+  background: linear-gradient(0deg, var(--blue) 0%, rgba(255, 255, 255, 0) calc(var(--scroll_percent) * 100% - 90%), rgba(255, 255, 255, 0) calc(var(--scroll_percent) * 100% + 90%), var(--green) 100%);
+}
+
+*::-webkit-scrollbar-thumb {
+  background: var(--blue);
+  background: linear-gradient(0deg, rgba(255, 255, 255, 0) 0%, var(--blue) min(calc(100% - var(--scroll_percent) * 100%), 30%), var(--green) max(calc(100% - var(--scroll_percent) * 100%), 70%), rgba(255, 255, 255, 0) 100%);
+}
+
+*::selection {
+  background-color: rgba(40, 142, 96, 0.571);
+  color: white;
+}
+
+*::-moz-selection {
+  background-color: rgba(40, 142, 96, 0.571);
+  color: white;
+}
+
+.flex {
+  display: flex;
+  align-items: center;
+}
+
+.flex svg {
+  margin: 0 5px 0 0;
+  width: 20px;
+  height: 20px;
+}
+
+.button {
+  cursor: pointer;
+}
+
+.hover-effect-1 {
+  transition: color .2s ease-in-out;
+  position: relative;
+}
+
+.hover-effect-1 svg {
+  transition: 0.2s;
+}
+
+
+.hover-effect-1:hover {
+  color:white;
+}
+
+.hover-effect-1::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 100%;
+  background: linear-gradient(to right, var(--blue),var(--green));
+  transition: 0.3s;
+  border-radius: 0.5em;
+  opacity: 0;
+  z-index: -1;
+}
+
+.hover-effect-1:hover svg {
+  color: var(--background);
+  transform: rotate(180deg);
+  margin: 0 15px 0 15px;
+}
+
+.hover-effect-1:hover::before {
+  width: 100%;
+  border-radius: 2em;
+  opacity: 1;
+  height: 100%;
+}
+
+.emptyContainer {
+  border: var(--gray) 3px dotted;
+  border-radius: 0.7em;
+  padding: 1.5em;
+  text-align: center;
+  color: var(--gray);
+}
+
+.button.round {
+  border-radius: 2em;
+  font-size: 1rem;
+}
+
+.button.normal {
+  border-radius: 0.5em;
+  font-size: 1.1em;
+}
+
+.button.gradient {
+  background: linear-gradient(37deg, var(--blue) 0%, var(--green) 100%);
+  color: var(--background);
+  border: none;
+  padding: 0.5em 1em;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.nq-button::-moz-focus-inner,
+.nq-button-s::-moz-focus-inner {
+  border: 0;
+}
+
+.nq-button {
+  position: relative;
+  border: none;
+  min-width: 5rem;
+  margin: 0.25rem auto;
+  box-shadow: 0 0.5rem 1.5rem rgba(0, 0, 0, 0.15);
+  cursor: pointer;
+  transition: transform 450ms var(--nimiq-ease),
+    box-shadow 450ms var(--nimiq-ease);
+  will-change: box-shadow;
+}
+
+.nq-button:hover,
+.nq-button:focus {
+  box-shadow: 0 1rem 2.5rem rgba(0, 0, 0, 0.2);
+  transform: translate3D(0, -2px, 0);
+}
+
+.nq-button:hover::before,
+.nq-button:active::before,
+.nq-button:focus::before {
+  opacity: 1;
+}
+
+.nq-button:active {
+  outline: none;
+  box-shadow: 0 0.2rem 0.3rem rgba(0, 0, 0, 0.2);
+  transform: translate3D(0, 1px, 0);
+  transition: transform 200ms cubic-bezier(0.41, 0.34, 0.26, 1.55),
+    box-shadow 200ms cubic-bezier(0.41, 0.34, 0.26, 1.55) !important;
+}
+
+
+.nq-button::after {
+  content: "";
+  position: absolute;
+  left: -5px;
+  top: -5px;
+  right: -5px;
+  bottom: -5px;
+  border: 2px solid var(--blue);
+  border-radius: 500px;
+  opacity: 0;
+}
+
+.nq-button:focus,
+.nq-button-s:focus,
+.nq-button-pill:focus {
+  outline: none;
+}
+
+.nq-button:focus::after {
+  opacity: 1;
+}
+
+@media (max-width: 1024px) {
+  .nq-button {
+    font-size: 0.6rem;
+  }
+}
+
+.title {
+  color: rgb(82, 82, 82);
+  background: linear-gradient(37deg, var(--blue) 0%, var(--green) 100%);
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  position: relative;
+  font-weight: bold;
+  width: fit-content;
+}
+
+.title.important::before {
+  content: "";
+  position: absolute;
+  top: 100%;
+  width: 100%;
+  left: 0;
+  height: 3px;
+  border-radius: 20px;
+  background: linear-gradient(37deg, rgb(0,161,232) 0%, rgb(128,244,192) 100%);
 }
