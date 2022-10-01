@@ -3,6 +3,14 @@ import styles from '../../styles/Menu.module.css'
 
 export default function CreateProjectMenu(props) {
     return <Menu buttons={[
+    <button onClick={() => props.setMenu(null)} className='button round nq-button gradient dark'>
+        <div className='flex'>
+            <svg fill="none" viewBox="0 0 24 24" strokeWidth={3} stroke="currentColor" className="w-6 h-6">
+            <path strokeLinecap="round" strokeLinejoin="round" d="M9.75 9.75l4.5 4.5m0-4.5l-4.5 4.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+            Cancel
+        </div>
+    </button>,
         <button className='button round nq-button gradient'>
         <div className='flex'>
             <svg fill="none" viewBox="0 0 24 24" strokeWidth={3} stroke="currentColor" className="w-6 h-6">

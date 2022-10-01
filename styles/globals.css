@@ -34,6 +34,10 @@ p {
   color: gray;
 }
 
+.fill {
+  width: 100%;
+}
+
 * {
   box-sizing: border-box;
   scrollbar-width: auto;
@@ -52,7 +56,7 @@ p {
 
 *::-webkit-scrollbar {
   width: 12px;
-  background-color: white;
+  background-color: transparent;
   background: linear-gradient(0deg, var(--blue) 0%, rgba(255, 255, 255, 0) calc(var(--scroll_percent) * 100% - 90%), rgba(255, 255, 255, 0) calc(var(--scroll_percent) * 100% + 90%), var(--green) 100%);
 }
 
@@ -301,8 +305,4 @@ input[type=text], select {
 input[type=text]::placeholder {
   color: gray;
   font-size: .9em;
-}
-
-*:focus {
-  outline: none;
 }

@@ -2,7 +2,6 @@ import Navbar from '../../components/dashboard/navbar'
 import styles from '../../styles/dashboard/Dashboard.module.css'
 import generateCardBackground from '../../utils/generateCardBackground'
 import { useState } from 'react'
-import CreateProjectMenu from '../../components/dashboard/createProjectMenu'
 
 export default function Dashboard() {
     const [projects, setProjects] = useState([
@@ -31,13 +30,13 @@ export default function Dashboard() {
             name: 'Project 4',
         },
     ])
+    const [menu, setMenu] = useState(null)
     return <section className={styles.page}>
-        <Navbar />
+        {menu}
+        <Navbar setMenu={setMenu} />
         <section className={styles.mainContainer}>
             <h1 className='title big'>Projects</h1>
             <br></br>
-            <CreateProjectMenu />
-            
             {
                 projects.length > 0 ? 
                     projects.map((project, index) => 

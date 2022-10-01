@@ -1,7 +1,9 @@
 import styles from '../../styles/dashboard/Navbar.module.css'
 import Link from 'next/link'
+import { render } from 'react-dom'
+import CreateProjectMenu from './createProjectMenu'
 
-export default function Navbar() {
+export default function Navbar(props) {
     return <div className={styles.container}>
         <Link href="/">
             <div className='flex button hover-effect-1 '>
@@ -16,13 +18,15 @@ export default function Navbar() {
             <li className='emptyContainer'>
                 No project yet
             </li>
-            <li className='button round nq-button gradient dark'>
-                <div className='flex'>
-                    <svg fill="none" viewBox="0 0 24 24" strokeWidth={3} stroke="currentColor" className="w-6 h-6">
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M12 9v6m3-3H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z" />
-                    </svg>
-                    New project
-                </div>
+            <li>
+                <button className='button round nq-button gradient dark fill' onClick={() => props.setMenu(<CreateProjectMenu setMenu={props.setMenu} />, document)}>
+                    <div className='flex'>
+                        <svg fill="none" viewBox="0 0 24 24" strokeWidth={3} stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M12 9v6m3-3H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z" />
+                        </svg>
+                        New project
+                    </div>
+                </button>
             </li>
         </ul>
         

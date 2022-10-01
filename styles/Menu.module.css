@@ -73,3 +73,7 @@
     align-items: center;
     border-top: 1px solid rgba(0, 0, 0, 0.15);
 }
+
+.buttonBar button {
+    margin: 0 10px;
+}

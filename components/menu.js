@@ -11,7 +11,7 @@ export default function Menu(props) {
             }
             {props.child}
             {props.buttons && <div className={styles.buttonBar}>
-                {props.buttons.map(button => button)}
+                {props.buttons.map((button, index) => <div key={"createProjectButton_" + index}>{button}</div>)}
             </div>}
         </div>
     </div>
