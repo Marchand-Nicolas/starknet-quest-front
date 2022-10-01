@@ -30,6 +30,10 @@ a {
   font-weight: bold;
 }
 
+p {
+  color: gray;
+}
+
 * {
   box-sizing: border-box;
   scrollbar-width: auto;
@@ -63,6 +67,27 @@ a {
 }
 
 *::-moz-selection {
+  background-color: rgba(40, 142, 96, 0.571);
+  color: white;
+}
+
+div::-webkit-scrollbar {
+  width: 12px;
+  background-color: white;
+  background: transparent;
+}
+
+div::-webkit-scrollbar-thumb {
+  background: var(--blue);
+  border-radius: 2em;
+}
+
+div::selection {
+  background-color: rgba(40, 142, 96, 0.571);
+  color: white;
+}
+
+div::-moz-selection {
   background-color: rgba(40, 142, 96, 0.571);
   color: white;
 }
@@ -124,7 +149,7 @@ a {
 }
 
 .emptyContainer {
-  border: var(--gray) 3px dotted;
+  border: var(--gray) 2px dotted;
   border-radius: 0.7em;
   padding: 1.5em;
   text-align: center;
@@ -147,7 +172,6 @@ a {
   border: none;
   padding: 0.5em 1em;
   font-weight: bold;
-  cursor: pointer;
 }
 
 .nq-button::-moz-focus-inner,
@@ -216,6 +240,14 @@ a {
   }
 }
 
+.button.gradient.dark {
+  background: linear-gradient(37deg, var(--gray) 0%, rgb(171, 171, 171) 100%) !important;
+  color: var(--background);
+  border: none;
+  padding: 0.5em 1em;
+  font-weight: bold;
+}
+
 .title {
   color: rgb(82, 82, 82);
   background: linear-gradient(37deg, var(--blue) 0%, var(--green) 100%);
@@ -235,4 +267,37 @@ a {
   height: 3px;
   border-radius: 20px;
   background: linear-gradient(37deg, rgb(0,161,232) 0%, rgb(128,244,192) 100%);
+}
+
+.title.big {
+  font-size: 4rem;
+  margin: 15px 0;
+}
+
+label {
+  margin-right: 10px;
+}
+
+.red {
+  color: red;
+}
+
+hr {
+  width: 100%;
+}
+
+input[type=text], select {
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: none;
+  border-radius: 4px;
+  box-sizing: border-box;
+  background-color: white;
+  border: 1px solid gray;
+  color: var(--gray);
+}
+
+*:focus {
+  outline: none;
 }
