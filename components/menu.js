@@ -3,10 +3,16 @@ export default function Menu(props) {
     return <div className={styles.container}>
         <div className={styles.menu}>
             {props.title && <>
-                <h1 className='title'>{props.title}</h1>
-                <hr></hr>
-            </>}
+            <header style={{backgroundImage:'url("' + props.headerBackground + '")'}} className={styles.header}>
+                <h1 className={styles.title}>{props.title}</h1>
+            </header>
+            <div className={styles.headerDecal} />
+            </>
+            }
             {props.child}
+            {props.buttons && <div className={styles.buttonBar}>
+                {props.buttons.map(button => button)}
+            </div>}
         </div>
     </div>
 }
