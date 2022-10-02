@@ -2,6 +2,7 @@ import Navbar from '../../components/dashboard/navbar'
 import styles from '../../styles/dashboard/Dashboard.module.css'
 import generateCardBackground from '../../utils/generateCardBackground'
 import { useEffect, useState } from 'react'
+import stringSimilarity from 'string-similarity'
 
 export default function Dashboard() {
     const [projects, setProjects] = useState([
@@ -30,8 +31,6 @@ export default function Dashboard() {
             name: 'Project 4',
         },
     ])
-
-    const stringSimilarity = require("string-similarity");
     const [filter, setFilter] = useState('')
     const [menu, setMenu] = useState(null)
     const [searchResult, setSearchResult] = useState([])
@@ -58,7 +57,7 @@ export default function Dashboard() {
             }
             setSearchResult(res)
         }
-    }, [filter])
+    }, [filter, projects])
 
     return <section className={styles.page}>
         {menu}
