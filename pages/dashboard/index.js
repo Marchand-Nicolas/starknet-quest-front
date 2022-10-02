@@ -3,37 +3,19 @@ import styles from '../../styles/dashboard/Dashboard.module.css'
 import generateCardBackground from '../../utils/generateCardBackground'
 import { useEffect, useState } from 'react'
 import stringSimilarity from 'string-similarity'
+import fetchApi from '../../utils/fetchApi'
+import config from '../../utils/config.json'
 
 export default function Dashboard() {
-    const [projects, setProjects] = useState([
-        {
-            name: 'aaayééuu',
-        },
-        {
-            name: 'cuicui',
-        },
-        {
-            name: 'sss 3',
-        },
-        {
-            name: 'abcdefg',
-        },
-        {
-            name: 'caaal',
-        },
-        {
-            name: 'opqrstu',
-        },
-        {
-            name: 'vwxyz',
-        },
-        {
-            name: 'aaapple',
-        },
-    ])
+    const [projects, setProjects] = useState([])
     const [filter, setFilter] = useState('')
     const [menu, setMenu] = useState(null)
     const [searchResult, setSearchResult] = useState([])
+    
+    useEffect(() => {
+        fetchApi(config.apiUrl, {}, setMenu)
+    }, [])
+
     useEffect(() => {
         if (filter) {
             const ratings = stringSimilarity.findBestMatch(filter.toLowerCase(), projects.map(project => project.name.toLowerCase())).ratings
