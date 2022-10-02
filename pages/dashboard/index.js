@@ -7,28 +7,28 @@ import stringSimilarity from 'string-similarity'
 export default function Dashboard() {
     const [projects, setProjects] = useState([
         {
-            name: 'Project 1',
+            name: 'aaayééuu',
         },
         {
-            name: 'Project 2',
+            name: 'cuicui',
         },
         {
-            name: 'Project 3',
+            name: 'sss 3',
         },
         {
-            name: 'Project 4',
+            name: 'abcdefg',
         },
         {
-            name: 'Project 1',
+            name: 'caaal',
         },
         {
-            name: 'Project 2',
+            name: 'opqrstu',
         },
         {
-            name: 'Project 3',
+            name: 'vwxyz',
         },
         {
-            name: 'Project 4',
+            name: 'aaapple',
         },
     ])
     const [filter, setFilter] = useState('')
@@ -36,26 +36,24 @@ export default function Dashboard() {
     const [searchResult, setSearchResult] = useState([])
     useEffect(() => {
         if (filter) {
-            const ratings = stringSimilarity.findBestMatch(filter, projects.map(project => project.name)).ratings
+            const ratings = stringSimilarity.findBestMatch(filter.toLowerCase(), projects.map(project => project.name.toLowerCase())).ratings
             const res = []
             for (let index = 0; index < ratings.length; index++) {
                 const rating = ratings[index];
-                if (rating.rating) {
-                    let found = false
-                    for (let index2 = 0; index2 < res.length; index2++) {
-                        const element = res[index2];
-                        if (element.rating < rating.rating) {
-                            res.splice(index2, 0, projects[index])
-                            found = true
-                            break;
-                        }
-                    }
-                    if (!found) {
-                        res.push(projects[index])
+                let found = false
+                for (let index2 = 0; index2 < res.length; index2++) {
+                    const element = res[index2];
+                    if (element.rating < rating.rating) {
+                        res.splice(index2, 0, {name: projects[index], rating: rating.rating})
+                        found = true
+                        break;
                     }
                 }
+                if (!found) {
+                    res.push({name: projects[index], rating: rating.rating})
+                }
             }
-            setSearchResult(res)
+            setSearchResult(res.map(project => project.name))
         }
     }, [filter, projects])
 
