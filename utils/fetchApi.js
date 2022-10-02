@@ -1,8 +1,10 @@
 import Menu from "../components/menu";
 import menuStyles from "../styles/components/Menu.module.css";
+import config from "./config";
 
 export default function fetchApi(url, body, setMenu) {
-    return fetch(url, {
+    const env = process.env.NODE_ENV
+    return fetch(env == "development" ? url.split(config.apiUrl).join(config.devApiUrl) : url, {
         method: "POST",
         headers: {"Content-Type": "application/json"},
         body: JSON.stringify(body)

@@ -1,3 +1,4 @@
 {
-    "apiUrl": "https://api.starknet.quest/"
+    "apiUrl": "https://api.starknet.quest/",
+    "devApiUrl": "http://localhost:8080/"
 }
