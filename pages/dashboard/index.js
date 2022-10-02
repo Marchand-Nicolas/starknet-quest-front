@@ -59,7 +59,7 @@ export default function Dashboard() {
 
     return <section className={styles.page}>
         {menu}
-        <Navbar setMenu={setMenu} />
+        <Navbar projects={projects} setMenu={setMenu} />
         <section className={styles.mainContainer}>
             <h1 className='title big'>Projects</h1>
             <div className='flex'>

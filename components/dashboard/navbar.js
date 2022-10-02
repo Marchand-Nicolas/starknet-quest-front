@@ -13,10 +13,27 @@ export default function Navbar(props) {
                 Back
             </div>
         </Link>
+        <br></br>
         <ul className={styles.list}>
-            <p>Projects</p>
-            <li className='emptyContainer'>
-                No project yet
+            <select className='fill borderless'>
+                <option>Your projects</option>
+            </select>
+            <br></br>
+            <br></br>
+            <li>
+                <ul className={styles.projectList}>
+                {
+                    props.projects.length ? props.projects.map((project, index) =>
+                        <li key={"project_" + index} className='button'>
+                            <Link href={"/dashboard/" + project.id}>
+                                <p>{project.name}</p>
+                            </Link>
+                        </li>
+                    ) : <li className='emptyContainer'>
+                    No project yet
+                </li>
+                }
+                </ul>
             </li>
             <li>
                 <button className='button round nq-button gradient bluePink fill' onClick={() => props.setMenu(<CreateProjectMenu setMenu={props.setMenu} />, document)}>

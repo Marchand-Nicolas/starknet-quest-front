@@ -75,6 +75,10 @@ p {
   border-radius: 2em;
 }
 
+.borderless {
+  border: none !important;
+} 
+
 .flex {
   display: flex;
   align-items: center;
@@ -287,6 +291,10 @@ input[type=text], select {
   border-radius: 1em;
   padding: 0 15px;
   font-size: 1.2em;
+}
+
+input[type=text]:focus, select:focus {
+  outline: var(--blue) 2px solid;
 }
 
 input[type=text]::placeholder {
