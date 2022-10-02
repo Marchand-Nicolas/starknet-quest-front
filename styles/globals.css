@@ -54,17 +54,6 @@ p {
   }
 }
 
-*::-webkit-scrollbar {
-  width: 12px;
-  background-color: transparent;
-  background: linear-gradient(0deg, var(--blue) 0%, rgba(255, 255, 255, 0) calc(var(--scroll_percent) * 100% - 90%), rgba(255, 255, 255, 0) calc(var(--scroll_percent) * 100% + 90%), var(--green) 100%);
-}
-
-*::-webkit-scrollbar-thumb {
-  background: var(--blue);
-  background: linear-gradient(0deg, rgba(255, 255, 255, 0) 0%, var(--blue) min(calc(100% - var(--scroll_percent) * 100%), 30%), var(--green) max(calc(100% - var(--scroll_percent) * 100%), 70%), rgba(255, 255, 255, 0) 100%);
-}
-
 *::selection {
   background-color: rgba(40, 142, 96, 0.571);
   color: white;
@@ -75,25 +64,15 @@ p {
   color: white;
 }
 
-div::-webkit-scrollbar {
+*::-webkit-scrollbar {
   width: 12px;
   background-color: white;
   background: transparent;
 }
 
-div::-webkit-scrollbar-thumb {
+*::-webkit-scrollbar-thumb {
   background: var(--blue);
   border-radius: 2em;
-}
-
-div::selection {
-  background-color: rgba(40, 142, 96, 0.571);
-  color: white;
-}
-
-div::-moz-selection {
-  background-color: rgba(40, 142, 96, 0.571);
-  color: white;
 }
 
 .flex {
@@ -176,6 +155,14 @@ div::-moz-selection {
   border: none;
   padding: 0.5em 1em;
   font-weight: bold;
+}
+
+.button.gradient.blue {
+  background: linear-gradient(37deg, var(--blue) 0%, rgb(59, 91, 255) 100%);
+}
+
+.button.gradient.bluePink {
+  background: linear-gradient(37deg, var(--blue) 0%, pink 100%);
 }
 
 .nq-button::-moz-focus-inner,

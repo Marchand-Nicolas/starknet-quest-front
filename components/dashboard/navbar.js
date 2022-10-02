@@ -19,7 +19,7 @@ export default function Navbar(props) {
                 No project yet
             </li>
             <li>
-                <button className='button round nq-button gradient dark fill' onClick={() => props.setMenu(<CreateProjectMenu setMenu={props.setMenu} />, document)}>
+                <button className='button round nq-button gradient bluePink fill' onClick={() => props.setMenu(<CreateProjectMenu setMenu={props.setMenu} />, document)}>
                     <div className='flex'>
                         <svg fill="none" viewBox="0 0 24 24" strokeWidth={3} stroke="currentColor">
                         <path strokeLinecap="round" strokeLinejoin="round" d="M12 9v6m3-3H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z" />
