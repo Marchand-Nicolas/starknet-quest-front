@@ -63,7 +63,7 @@ export default function Dashboard() {
         <section className={styles.mainContainer}>
             <h1 className='title big'>Projects</h1>
             <div className='flex'>
-                <input onChange={(e) => setFilter(e.target.value)} type="text" className='fill' placeholder='Q search'></input>
+                <input onChange={(e) => setFilter(e.target.value)} type="text" className='fill' placeholder='Search'></input>
             </div>
             <br></br>
             <br></br>
