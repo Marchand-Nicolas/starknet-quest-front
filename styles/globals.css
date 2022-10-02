@@ -5,6 +5,7 @@
   --blue: rgb(0,161,232);
   --pink: pink;
   --gray: rgb(82, 82, 82);
+  --red: rgb(255, 131, 131);
   --nimiq-ease: cubic-bezier(0.25,0,0,1);
 }
 
@@ -300,4 +301,15 @@ input[type=text]:focus, select:focus {
 input[type=text]::placeholder {
   color: gray;
   font-size: .9em;
+}
+
+.notification {
+  width: 100%;
+  padding: 1em;
+  background: var(--red);
+  color: var(--background);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 1em;
 }
