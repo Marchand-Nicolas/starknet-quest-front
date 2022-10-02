@@ -306,10 +306,14 @@ input[type=text]::placeholder {
 .notification {
   width: 100%;
   padding: 1em;
-  background: var(--red);
+  background: var(--blue);
   color: var(--background);
   display: flex;
   align-items: center;
   justify-content: center;
   border-radius: 1em;
+}
+
+.notification.error {
+  background: var(--red);
 }
