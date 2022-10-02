@@ -1,7 +1,7 @@
 import Navbar from '../../components/dashboard/navbar'
 import styles from '../../styles/dashboard/Dashboard.module.css'
 import generateCardBackground from '../../utils/generateCardBackground'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 
 export default function Dashboard() {
     const [projects, setProjects] = useState([
@@ -30,16 +30,49 @@ export default function Dashboard() {
             name: 'Project 4',
         },
     ])
+
+    const stringSimilarity = require("string-similarity");
+    const [filter, setFilter] = useState('')
     const [menu, setMenu] = useState(null)
+    const [searchResult, setSearchResult] = useState([])
+    useEffect(() => {
+        if (filter) {
+            const ratings = stringSimilarity.findBestMatch(filter, projects.map(project => project.name)).ratings
+            const res = []
+            for (let index = 0; index < ratings.length; index++) {
+                const rating = ratings[index];
+                if (rating.rating) {
+                    let found = false
+                    for (let index2 = 0; index2 < res.length; index2++) {
+                        const element = res[index2];
+                        if (element.rating < rating.rating) {
+                            res.splice(index2, 0, projects[index])
+                            found = true
+                            break;
+                        }
+                    }
+                    if (!found) {
+                        res.push(projects[index])
+                    }
+                }
+            }
+            setSearchResult(res)
+        }
+    }, [filter])
+
     return <section className={styles.page}>
         {menu}
         <Navbar setMenu={setMenu} />
         <section className={styles.mainContainer}>
             <h1 className='title big'>Projects</h1>
+            <div className='flex'>
+                <input onChange={(e) => setFilter(e.target.value)} type="text" className='fill' placeholder='Q search'></input>
+            </div>
+            <br></br>
             <br></br>
             {
                 projects.length > 0 ? 
-                    projects.map((project, index) => 
+                    (filter ? searchResult : projects).map((project, index) => 
                         <div key={"project_" + index} className={styles.projectCard}>
                             <div className={[styles.name, "flex"].join(" ")}>
                                 <p>{project.name}</p>
