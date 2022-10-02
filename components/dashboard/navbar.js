@@ -1,6 +1,5 @@
-import styles from '../../styles/dashboard/Navbar.module.css'
+import styles from '../../styles/components/dashboard/Navbar.module.css'
 import Link from 'next/link'
-import { render } from 'react-dom'
 import CreateProjectMenu from './createProjectMenu'
 
 export default function Navbar(props) {
