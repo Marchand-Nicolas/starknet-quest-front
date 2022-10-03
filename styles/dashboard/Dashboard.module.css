@@ -97,3 +97,24 @@
     margin-left: 10px;
     cursor: pointer;
 }
+
+.utilsContainer {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-bottom: 45px;
+}
+
+.utilsContainer .card {
+    margin: 2em;
+    width: fit-content;
+    display: flex;
+    color: var(--gray);
+    padding: 0.5em 2em;
+    font-size: 0.7rem;
+    letter-spacing: 2px;
+    font-weight: 400;
+    border-radius: 4em;
+}

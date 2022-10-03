@@ -20,19 +20,21 @@ export default function Navbar(props) {
             <br></br>
             <br></br>
             <li>
-                <ul className={styles.projectList}>
                 {
-                    props.projects.length ? props.projects.map((project, index) =>
-                        <li key={"project_" + index} className='button'>
-                            <Link href={"/dashboard/" + project.id}>
-                                <p>{project.name}</p>
-                            </Link>
-                        </li>
-                    ) : <li className='emptyContainer'>
-                    No project yet
-                </li>
+                    props.projects.length ? <ul className={styles.projectList}>
+                    {
+                        props.projects.map((project, index) =>
+                            <li key={"project_" + index} className='button'>
+                                <Link href={"/dashboard/" + project.id}>
+                                    <p>{project.name}</p>
+                                </Link>
+                            </li>
+                        )
+                    }
+                    </ul> : <div className='emptyContainer'>
+                        No project yet
+                    </div>
                 }
-                </ul>
             </li>
             <li>
                 <button className='button round nq-button gradient bluePink fill' onClick={() => props.setMenu(<CreateProjectMenu setMenu={props.setMenu} />, document)}>
