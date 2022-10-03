@@ -4,7 +4,9 @@
   --green: rgb(128,244,192);
   --blue: rgb(0,161,232);
   --pink: pink;
-  --gray: rgb(82, 82, 82);
+  --gray: rgb(143, 143, 143);
+  --dark-gray: rgb(82, 82, 82);
+  --light-gray: rgb(224, 224, 224);
   --red: rgb(255, 131, 131);
   --nimiq-ease: cubic-bezier(0.25,0,0,1);
 }
@@ -15,6 +17,10 @@ body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+}
+
+.blue {
+  color: var(--blue);
 }
 
 a {
@@ -37,6 +43,10 @@ p {
 
 .fill {
   width: 100%;
+}
+
+.fit {
+  width: fit-content;
 }
 
 * {
@@ -95,49 +105,8 @@ p {
   cursor: pointer;
 }
 
-.hover-effect-1 {
-  transition: color .2s ease-in-out;
-  position: relative;
-}
-
-.hover-effect-1 svg {
-  transition: 0.2s;
-}
-
-
-.hover-effect-1:hover {
-  color:white;
-}
-
-.hover-effect-1::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 0;
-  height: 100%;
-  background: linear-gradient(to right, var(--blue),var(--green));
-  transition: 0.3s;
-  border-radius: 0.5em;
-  opacity: 0;
-  z-index: -1;
-}
-
-.hover-effect-1:hover svg {
-  color: var(--background);
-  transform: rotate(180deg);
-  margin: 0 15px 0 15px;
-}
-
-.hover-effect-1:hover::before {
-  width: 100%;
-  border-radius: 2em;
-  opacity: 1;
-  height: 100%;
-}
-
 .emptyContainer {
-  border: var(--gray) 2px dotted;
+  border: var(--light-gray) 1px solid;
   border-radius: 0.7em;
   padding: 1.5em;
   text-align: center;
@@ -154,20 +123,20 @@ p {
   font-size: 1.1em;
 }
 
-.button.gradient {
-  background: linear-gradient(37deg, var(--blue) 0%, var(--green) 100%);
+.button.blue {
+  background: var(--blue);
   color: var(--background);
   border: none;
   padding: 0.5em 1em;
   font-weight: bold;
 }
 
-.button.gradient.blue {
-  background: linear-gradient(37deg, var(--blue) 0%, rgb(59, 91, 255) 100%);
-}
-
-.button.gradient.bluePink {
-  background: linear-gradient(37deg, var(--blue) 0%, pink 100%);
+.button.gradient {
+  background: linear-gradient(37deg, var(--blue) 0%, var(--gray) 65%);
+  color: var(--background);
+  border: none;
+  padding: 0.5em 1em;
+  font-weight: bold;
 }
 
 .nq-button::-moz-focus-inner,
@@ -254,6 +223,13 @@ p {
   width: fit-content;
 }
 
+.title.gray {
+  background: unset;
+  background-clip: unset;
+  -webkit-text-fill-color: unset;
+  color: var(--gray);
+}
+
 .title.important::before {
   content: "";
   position: absolute;
@@ -316,4 +292,10 @@ input[type=text]::placeholder {
 
 .notification.error {
   background: var(--red);
+}
+
+.center {
+  text-align: center;
+  margin: 0 auto;
+  display: block;
 }

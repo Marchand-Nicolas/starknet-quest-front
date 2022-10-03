@@ -6,6 +6,8 @@ import stringSimilarity from 'string-similarity'
 import fetchApi from '../../utils/fetchApi'
 import config from '../../utils/config.json'
 import Link from 'next/link'
+import Image from 'next/image'
+import CreateProjectMenu from '../../components/dashboard/createProjectMenu'
 
 export default function Dashboard() {
     const [projects, setProjects] = useState([])
@@ -19,6 +21,7 @@ export default function Dashboard() {
 
     useEffect(() => {
         if (filter) {
+            if (!projects.length) return
             const ratings = stringSimilarity.findBestMatch(filter.toLowerCase(), projects.map(project => project.name.toLowerCase())).ratings
             const res = []
             for (let index = 0; index < ratings.length; index++) {
@@ -44,7 +47,7 @@ export default function Dashboard() {
         {menu}
         <Navbar projects={projects} setMenu={setMenu} />
         <section className={styles.mainContainer}>
-            <h1 className='title big'>Projects</h1>
+            <h1 className='title big gray'><strong className='blue'>P</strong>rojects</h1>
             <div className='flex'>
                 <input onChange={(e) => setFilter(e.target.value)} type="text" className='fill' placeholder='Search'></input>
             </div>
@@ -103,11 +106,26 @@ export default function Dashboard() {
                             </div>
                         </div>
                     )
-                : null
+                : <>
+                    <div className={styles.noProjectContainer}>
+                        <Image alt='No projects' layout='fill' src="/illustrations/no-project.svg" />
+                    </div>
+                    <button className='button round nq-button blue center' onClick={() => props.setMenu(<CreateProjectMenu setMenu={props.setMenu} />, document)}>
+                    <div className='flex'>
+                        <svg fill="none" viewBox="0 0 24 24" strokeWidth={3} stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M12 9v6m3-3H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z" />
+                        </svg>
+                        Create your first project
+                    </div>
+                    </button>
+                    <br></br>
+                    <br></br>
+                    <br></br>
+                </>
             }
             <section className={styles.utilsContainer}>
                 <Link href="/">
-                    <div className={[styles.card, "button flex nq-button"].join(" ")}>
+                    <div className={[styles.card, "button flex"].join(" ")}>
                         <svg fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor">
                         <path strokeLinecap="round" strokeLinejoin="round" d="M2.25 12l8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25" />
                         </svg>
@@ -115,7 +133,7 @@ export default function Dashboard() {
                     </div>
                 </Link>
                 <a href="https://discord.com/invite/7FMsUDpRdj" target="_blank" rel="noreferrer">
-                    <div className={[styles.card, "button flex nq-button"].join(" ")}>
+                    <div className={[styles.card, "button flex"].join(" ")}>
                         <svg fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor">
                         <path strokeLinecap="round" strokeLinejoin="round" d="M16.712 4.33a9.027 9.027 0 011.652 1.306c.51.51.944 1.064 1.306 1.652M16.712 4.33l-3.448 4.138m3.448-4.138a9.014 9.014 0 00-9.424 0M19.67 7.288l-4.138 3.448m4.138-3.448a9.014 9.014 0 010 9.424m-4.138-5.976a3.736 3.736 0 00-.88-1.388 3.737 3.737 0 00-1.388-.88m2.268 2.268a3.765 3.765 0 010 2.528m-2.268-4.796a3.765 3.765 0 00-2.528 0m4.796 4.796c-.181.506-.475.982-.88 1.388a3.736 3.736 0 01-1.388.88m2.268-2.268l4.138 3.448m0 0a9.027 9.027 0 01-1.306 1.652c-.51.51-1.064.944-1.652 1.306m0 0l-3.448-4.138m3.448 4.138a9.014 9.014 0 01-9.424 0m5.976-4.138a3.765 3.765 0 01-2.528 0m0 0a3.736 3.736 0 01-1.388-.88 3.737 3.737 0 01-.88-1.388m2.268 2.268L7.288 19.67m0 0a9.024 9.024 0 01-1.652-1.306 9.027 9.027 0 01-1.306-1.652m0 0l4.138-3.448M4.33 16.712a9.014 9.014 0 010-9.424m4.138 5.976a3.765 3.765 0 010-2.528m0 0c.181-.506.475-.982.88-1.388a3.736 3.736 0 011.388-.88m-2.268 2.268L4.33 7.288m6.406 1.18L7.288 4.33m0 0a9.024 9.024 0 00-1.652 1.306A9.025 9.025 0 004.33 7.288" />
                         </svg>
@@ -123,7 +141,7 @@ export default function Dashboard() {
                     </div>
                 </a>
                 <Link href="/projects">
-                    <div className={[styles.card, "button flex nq-button"].join(" ")}>
+                    <div className={[styles.card, "button flex"].join(" ")}>
                         <svg fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor">
                         <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 9.776c.112-.017.227-.026.344-.026h15.812c.117 0 .232.009.344.026m-16.5 0a2.25 2.25 0 00-1.883 2.542l.857 6a2.25 2.25 0 002.227 1.932H19.05a2.25 2.25 0 002.227-1.932l.857-6a2.25 2.25 0 00-1.883-2.542m-16.5 0V6A2.25 2.25 0 016 3.75h3.879a1.5 1.5 0 011.06.44l2.122 2.12a1.5 1.5 0 001.06.44H18A2.25 2.25 0 0120.25 9v.776" />
                         </svg>
@@ -131,7 +149,7 @@ export default function Dashboard() {
                     </div>
                 </Link>
                 <Link href="/premium">
-                    <div className={[styles.card, "button flex nq-button"].join(" ")}>
+                    <div className={[styles.card, "button flex"].join(" ")}>
                         <svg fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor">
                         <path strokeLinecap="round" strokeLinejoin="round" d="M2.25 18.75a60.07 60.07 0 0115.797 2.101c.727.198 1.453-.342 1.453-1.096V18.75M3.75 4.5v.75A.75.75 0 013 6h-.75m0 0v-.375c0-.621.504-1.125 1.125-1.125H20.25M2.25 6v9m18-10.5v.75c0 .414.336.75.75.75h.75m-1.5-1.5h.375c.621 0 1.125.504 1.125 1.125v9.75c0 .621-.504 1.125-1.125 1.125h-.375m1.5-1.5H21a.75.75 0 00-.75.75v.75m0 0H3.75m0 0h-.375a1.125 1.125 0 01-1.125-1.125V15m1.5 1.5v-.75A.75.75 0 003 15h-.75M15 10.5a3 3 0 11-6 0 3 3 0 016 0zm3 0h.008v.008H18V10.5zm-12 0h.008v.008H6V10.5z" />
                         </svg>

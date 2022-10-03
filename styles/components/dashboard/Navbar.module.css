@@ -1,6 +1,6 @@
 .container {
     width: 300px;
-    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.15);
+    border: 1px solid var(--light-gray);
     padding: 15px;
     position: fixed;
     top: 0;
